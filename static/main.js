@@ -1898,8 +1898,8 @@ let render =() =>{
 		ctx.fillText("2. Create a Site/Plot boundry (First button from Left) to get started.", 10, (h/2));
 		ctx.fillText("3. Start creating a Space (Second button from Left).", 10, (h/2)+20);
 		ctx.fillText("4. This software is operational only from workstations/laptops/desktops.", 10, (h/2)+40);
-		ctx.fillText("2021 Copyrights @ Quantum Pixel Intelligence. All Rights Reserved.", 10, (h/2)+60);
-
+		ctx.fillText("2022 Copyrights @ Kartik Jadhav. All Rights Reserved.", 10, (h/2)+60);
+		ctx.fillText("Note - This is free version. Few functions are disabled.", 10, (h/2)+80);
 
 	}
 

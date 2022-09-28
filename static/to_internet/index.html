@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Welcome to Grids-AI</title>
+	<!-- This page is solely authored by Kartik Jadhav. 
+	2021 Copyrights @ Kartik Jadhav / Quantum Pixel Inelligence.
+	All Rights Reserved.-->
+	<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+	<style type="text/css">
+		body {
+		   overscroll-behavior: contain;
+		}
+		body{
+			background-color: white;
+			overflow: hidden;
+			/*font-family: 'Trebuchet MS', sans-serif;*/
+			font-family: Arial, sans-serif;
+
+
+		}
+		#top-bar{
+			background-image:linear-gradient(to bottom ,gainsboro,darkgray);
+			display: inline-block;	
+			width: 100%;
+			border-bottom: 1px solid gray;
+			border-radius: 8px;
+			box-shadow: 2px 2px 2px;
+			margin-bottom: 3px;
+		}
+		canvas{
+			margin-top: 5px;
+			cursor: pointer;
+			
+		}
+		
+		
+		
+		#title2{
+			background-color: darkgray;
+			color: black;
+			font-family: 'Trebuchet MS', sans-serif;
+			margin-left: 0px;
+			font-size: 20px;
+			border: 1px dashed black;
+			font-weight: bold;
+
+		}
+	
+		#currentCol,#currentCellAreaL{
+			color: white;
+			/*font-family: 'Trebuchet MS', sans-serif;*/
+			font-family: Arial, sans-serif;		
+			padding: 5px;
+			margin: 1px;
+			
+		}
+
+		select{
+			margin-left: 1px;
+			margin-right: 1px;
+		}
+		input{
+			width: 5%;
+		}
+		#projSetup, #docs, #save, #login, #reg, #linework{
+			color: gainsboro;
+		}
+		label{
+			color: black;
+		}
+		
+
+		/*Buttons*/
+
+
+		.topbuttons{
+			
+			display: inline-block;
+			float: left;
+			width: 50px;
+			height: 50px;
+			padding: 0px;
+			margin-top: 0px;
+			margin-bottom: 0px;
+			margin-right: 0px;
+			margin-left: 0px;
+			background-color: silver;
+			border: 0px dotted black;
+			border-radius: 0px;
+			
+		}
+		
+		.topbuttons:hover{
+			background-color: red;
+		}
+
+		#newspace{
+			background: url(static/Img/addspace.png) no-repeat center;
+			background-size: 24px 24px;
+			
+		}
+		#newspace:hover{
+			background-color:lightgrey;		
+		}
+		#newspace:active{
+			background-color:gainsboro;		
+		}
+	
+		
+		#lineToggle{
+			background: url(static/Img/addline.png) no-repeat center;
+			background-size: 24px 24px;
+			
+		}
+		#lineToggle:hover{
+			background-color:lightgrey;		
+		}
+		#lineToggle:active{
+			background-color:gainsboro;		
+		}
+
+
+		#match{
+			background: url(static/Img/picker.png) no-repeat center;
+			background-size: 24px 24px;
+			
+		}
+
+		#match:hover{
+			background-color:lightgrey;		
+		}
+		#match:active{
+			background-color:gainsboro;		
+		}
+
+
+
+		#measure{
+			background: url(static/Img/measure.png) no-repeat center;
+			background-size: 24px 24px;
+			
+		}
+		#measure:hover{
+			background-color:lightgrey;		
+		}
+		#measure:active{
+			background-color:gainsboro;		
+		}
+
+
+		#addsite{
+			background: url(static/Img/addsite2.png) no-repeat center;
+			background-size: 24px 24px;
+			
+			
+		}
+		#addsite:hover{
+			background-color:lightgrey;		
+		}
+		#addsite:active{
+			background-color:gainsboro;		
+		}
+
+
+		#addremove{
+			background: url(static/Img/removespace2.png) no-repeat center;
+			background-size: 24px 24px;
+			
+		}
+
+		#addremove:hover{
+			background-color:lightgrey;		
+		}
+		#addremove:active{
+			background-color:gainsboro;		
+		}
+		
+
+		
+
+
+		#lines{
+			background: url(static/Img/addline.png) no-repeat center;
+			background-size: 24px 24px;
+			
+		}
+		#lines:hover{
+			background-color:lightgrey;		
+		}
+		#lines:active{
+			background-color:gainsboro;		
+		}
+		
+
+		#deleteall{
+			background: url(static/Img/deleteall.png) no-repeat center;
+			background-size: 24px 24px;
+			
+		}
+
+		#deleteall:hover{
+			background-color:lightgrey;		
+		}
+		#deleteall:active{
+			background-color:gainsboro;		
+		}
+		
+
+
+		#caution{
+			background: url(static/Img/bug.png) no-repeat center;
+			background-size: 24px 24px;
+			
+		}
+
+		#caution:hover{
+			background-color:lightgrey;		
+		}
+		#caution:active{
+			background-color:gainsboro;		
+		}
+
+
+		#projSetup{
+			background: url(static/Img/settings.png) no-repeat center;
+			background-size: 24px 24px;
+			
+		}
+		#projSetup:hover{
+			background-color:lightgrey;		
+		}
+		#projSetup:active{
+			background-color:gainsboro;		
+		}
+
+
+
+		#lineEraser{
+			background: url(static/Img/removeline.png) no-repeat center;
+			background-size: 24px 24px;
+			
+		}
+
+		#lineEraser:hover{
+			background-color:lightgrey;		
+		}
+		#lineEraser:active{
+			background-color:gainsboro;		
+		}
+
+
+
+		#title{
+			background: url(static/Img/grids-ai-logo2.png) no-repeat center;
+			background-size: 20px 32px;
+			border: 0px;
+			
+			
+		}
+
+
+
+		#downloadSn{
+			background: url(static/Img/downloadcam.png) no-repeat center;
+			background-size: 24px 24px;
+			
+		}
+
+		#downloadSn:hover{
+			background-color:lightgrey;		
+		}
+		#downloadSn:active{
+			background-color:gainsboro;		
+		}
+
+
+		#shuffle{
+			background: url(static/Img/shuffle.png) no-repeat center;
+			background-size: 24px 24px;
+			
+		}
+		#shuffle:hover{
+			background-color:lightgrey;		
+		}
+		#shuffle:active{
+			background-color:gainsboro;		
+		}
+
+
+		#about{
+			background: url(static/Img/about.png) no-repeat center;
+			background-size: 24px 24px;
+			
+		}
+		#about:hover{
+			background-color:lightgrey;		
+		}
+		#about:active{
+			background-color:gainsboro;		
+		}
+
+
+		#help{
+			background: url(static/Img/help.png) no-repeat center;
+			background-size: 24px 24px;
+			
+		}
+		#help:hover{
+			background-color:lightgrey;		
+		}
+		#help:active{
+			background-color:gainsboro;		
+		}
+
+		#downloadAll{
+			background: url(static/Img/file-extension-zip-icon-32.png) no-repeat center;
+			background-size: 24px 24px;
+			
+		}
+		#downloadAll:hover{
+			background-color:lightgrey;		
+		}
+		#downloadAll:active{
+			background-color:gainsboro;		
+		}
+
+
+		#automate{
+			background: url(static/Img/automate.png) no-repeat center;
+			background-size: 24px 24px;
+			
+		}
+		#automate:hover{
+			background-color:lightgrey;		
+		}
+		#automate:active{
+			background-color:gainsboro;		
+		}
+
+
+
+		#copySpace{
+			background: url(static/Img/duplicate.png) no-repeat center;
+			background-size: 24px 24px;
+			
+		}
+
+		#copySpace:hover{
+			background-color:lightgrey;		
+		}
+		#copySpace:active{
+			background-color:gainsboro;		
+		}
+
+
+
+		#selSimilar{
+			background: url(static/Img/movesingle.png) no-repeat center;
+			background-size: 24px 24px;
+			
+		}
+		#selSimilar:hover{
+			background-color:lightgrey;		
+		}
+		#selSimilar:active{
+			background-color:gainsboro;		
+		}
+
+
+		#directdesign{
+			background: url(static/Img/emotion-terminator-icon-32.png) no-repeat center;
+			background-size: 24px 24px;
+			
+		}
+		#directdesign:hover{
+			background-color:lightgrey;		
+		}
+		#directdesign:active{
+			background-color:gainsboro;		
+		}
+
+
+		#moveAll{
+			background: url(static/Img/moveall.png) no-repeat center;
+			background-size: 24px 24px;
+			
+		}
+		#moveAll:hover{
+			background-color:lightgrey;		
+		}
+		#moveAll:active{
+			background-color:gainsboro;		
+		}
+
+		#docs{
+			background: url(static/Img/naming2.png) no-repeat center;
+			background-size: 24px 24px;
+			
+		}
+		#docs:hover{
+			background-color:lightgrey;		
+		}
+		#docs:active{
+			background-color:gainsboro;		
+		}
+
+
+
+		#getasreastatement:hover{
+			border-color: white;
+		}
+
+		#secondTop-bar{
+			width: 100%;
+			height: 20px;
+			background-color: lightgrey;
+			margin: 0px;
+			border: 1px solid dimgrey;
+			color: black;
+			border-radius: 5px;
+
+
+
+		}
+		#active-command{
+			font-size: 10px;
+			margin: 0px 5px;
+			padding-top: 5px;
+			color: black;
+
+		}
+
+
+
+
+		label{
+			color: white;
+
+		}
+		label:hover{
+			color: chartreuse;
+		}
+
+		input[type=radio] {
+
+			width: 50px;
+
+		}
+
+		.modalProj-bg{
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100vh;
+			background-color: rgba(0,0,0,0.5);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			visibility: hidden;
+			opacity: 0;
+			transition: visibility 1s, opacity 0.5s;
+		}
+
+		.bgProj-active{
+			visibility: visible;
+			opacity: 1;
+		}
+
+		.modal-project{
+			background-color: gainsboro;
+			height: 45%;
+			width: 80%;
+			display: flex;
+			font-family: 'Trebuchet MS', sans-serif;
+			margin-left: 0px;
+			font-size: 15px;
+			border-radius: 10px;
+			align-items: center;
+			flex-direction: column;
+			padding: 1px;
+			overflow: auto;
+			color: black;
+
+		}
+		.modal-project label{
+			margin: 10px;
+			color: black;
+			
+			padding: 5px;
+			
+		}
+		.modal-project button{
+			margin: 20px 0px;
+		}
+		.modal-project select{
+			width: 45%;
+			border-radius: 25px;
+			height: 35px;
+			text-align: center;
+			border: 1px dotted gray;
+			
+		}
+		.modal-project input{
+			width: 45%;
+			border-radius: 25px;
+			height: 30px;
+			text-align: center;
+			border: 1px dotted gray;
+
+		}
+
+
+		.modalDoc-bg{
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100vh;
+			background-color: rgba(0,0,0,0.5);
+			display: flex;
+			justify-content: right;
+			align-items: center;
+			visibility: hidden;
+			opacity: 0;
+			transition: visibility 1s, opacity 0.5s;
+		}
+
+		.bgDoc-active{
+			visibility: visible;
+			opacity: 1;
+		}
+
+		.modal-doc{
+			
+			height: 40%;
+			width: 500px;
+			display: flex;
+			border-radius: 10px;
+			align-items: center;
+			flex-direction: column;
+			padding: 15px;
+			overflow: auto;
+		}
+
+		.modal-doc label{
+			color: white;
+			margin: 15px;
+			justify-content: center;
+			text-align: center;
+		}
+
+		#areaTable{
+
+			color: black;
+			border: 1px solid black;
+			border-collapse: collapse;
+		}
+
+		
+		.modal-doc input{
+			position: relative;
+			text-align: center;
+			align-content: center;
+			background-color: dimgrey;
+			min-width: 10px;
+			max-width: 100px;
+			width: 100px;
+			color: white;
+			border-color: 0px solid black;
+			margin: 0px;
+			padding: 10px;
+
+		}
+
+		.modal-doc select{
+			position: relative;
+			text-align: center;
+			align-content: center;
+			background-color: dimgrey;
+			min-width: 10px;
+			max-width: 100px;
+			width: 100px;
+			color: white;
+			border-color: 0px solid black;
+			margin: 0px;
+			padding: 10px;
+		}
+
+
+		.modalLine-bg{
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100vh;
+			background-color: rgba(0,0,0,0.5);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			visibility: hidden;
+			opacity: 0;
+			transition: visibility 1s, opacity 0.5s;
+			
+		}
+
+		.bgLine-active{
+			visibility: visible;
+			opacity: 1;
+		}
+
+		.modal-line{
+			background-color: gainsboro;
+			height: 45%;
+			width: 80%;
+			display: flex;
+			font-family: 'Trebuchet MS', sans-serif;
+			margin-left: 0px;
+			font-size: 15px;
+			border-radius: 10px;
+			align-items: center;
+			flex-direction: column;
+			padding: 1px;
+			overflow: auto;
+			color: black;
+
+		}
+
+		
+		.modal-line input{
+			width: 45%;
+			border-radius: 25px;
+			height: 35px;
+			text-align: center;
+			border: 1px dotted gray;
+		}
+		
+		.modal-line label{
+			color: black;
+			margin:10px;
+		}
+		
+		.modal-line button{
+			color: black;
+			margin:10px;
+		}
+		.modal-line select{
+			width: 45%;
+			border-radius: 25px;
+			height: 35px;
+			text-align: center;
+			border: 1px dotted gray;
+		}
+
+		#colorpicker{
+			width: 20%;
+			height: 20%;
+		}
+		
+
+
+		.modalHelp-bg{
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100vh;
+			background-color: rgba(0,0,0,0.5);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			visibility: hidden;
+			opacity: 0;
+			transition: visibility 1s, opacity 0.5s;
+			
+		}
+
+		.bgHelp-active{
+			visibility: visible;
+			opacity: 1;
+		}
+
+		.modal-Help{
+			background-color: gainsboro;
+			height: 45%;
+			width: 80%;
+			display: flex;
+			font-family: 'Trebuchet MS', sans-serif;
+			margin-left: 0px;
+			font-size: 15px;
+			border-radius: 10px;
+			align-items: center;
+			flex-direction: column;
+			padding: 1px;
+			overflow: auto;
+			color: black;
+
+		}
+
+		
+
+
+		.modalAbout-bg{
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100vh;
+			background-color: rgba(0,0,0,0.5);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			visibility: hidden;
+			opacity: 0;
+			transition: visibility 1s, opacity 0.5s;
+			
+		}
+
+		.bgAbout-active{
+			visibility: visible;
+			opacity: 1;
+		}
+
+		.modal-About{
+			background-color: gainsboro;
+			height: 45%;
+			width: 80%;
+			display: flex;
+			font-family: 'Trebuchet MS', sans-serif;
+			margin-left: 0px;
+			font-size: 15px;
+			border-radius: 10px;
+			align-items: center;
+			flex-direction: column;
+			padding: 50px;
+			overflow: auto;
+			color: black;
+
+		}
+
+
+
+		.modalAutomate-bg{
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100vh;
+			background-color: rgba(0,0,0,0.5);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			visibility: hidden;
+			opacity: 0;
+			transition: visibility 1s, opacity 0.5s;
+		}
+
+		.bgAutomate-active{
+			visibility: visible;
+			opacity: 1;
+		}
+
+		.modal-Automate{
+			background-color: gainsboro;
+			height: 45%;
+			width: 80%;
+			display: flex;
+			font-family: 'Trebuchet MS', sans-serif;
+			margin-left: 0px;
+			font-size: 15px;
+			border-radius: 10px;
+			align-items: center;
+			flex-direction: column;
+			padding: 50px;
+			overflow: auto;
+			color: black;
+
+		}
+
+		.modalShuffle-bg{
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100vh;
+			background-color: rgba(0,0,0,0.5);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			visibility: hidden;
+			opacity: 0;
+			transition: visibility 1s, opacity 0.5s;
+			
+		}
+
+		.bgShuffle-active{
+			visibility: visible;
+			opacity: 1;
+		}
+
+		.modal-Shuffle{
+			background-color: gainsboro;
+			height: 45%;
+			width: 80%;
+			display: flex;
+			font-family: 'Trebuchet MS', sans-serif;
+			margin-left: 0px;
+			font-size: 15px;
+			border-radius: 10px;
+			align-items: center;
+			flex-direction: column;
+			padding: 50px;
+			overflow: auto;
+			color: black;
+
+		}
+
+
+		.modalDD-bg{
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100vh;
+			background-color: rgba(0,0,0,0.5);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			visibility: hidden;
+			opacity: 0;
+			transition: visibility 1s, opacity 0.5s;
+			
+		}
+
+		.bgDD-active{
+			visibility: visible;
+			opacity: 1;
+		}
+
+		.modal-DD{
+			background-color: gainsboro;
+			height: 45%;
+			width: 80%;
+			display: flex;
+			font-family: 'Trebuchet MS', sans-serif;
+			margin-left: 0px;
+			font-size: 15px;
+			border-radius: 10px;
+			align-items: center;
+			flex-direction: column;
+			padding: 50px;
+			overflow: auto;
+			color: black;
+
+		}
+
+		#modal-DD label{
+			width: 300px;
+		} 
+
+
+
+
+		.modalCaution-bg{
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100vh;
+			background-color: rgba(0,0,0,0.5);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			visibility: hidden;
+			opacity: 0;
+			transition: visibility 1s, opacity 0.5s;
+			
+		}
+
+		.bgCaution-active{
+			visibility: visible;
+			opacity: 1;
+		}
+
+		.modal-Caution{
+			background-color: gainsboro;
+			height: 45%;
+			width: 80%;
+			display: flex;
+			font-family: 'Trebuchet MS', sans-serif;
+			margin-left: 0px;
+			font-size: 15px;
+			border-radius: 10px;
+			align-items: center;
+			flex-direction: column;
+			padding: 50px;
+			overflow: auto;
+			color: black;
+
+		}
+
+
+		.modal-Help button{
+			background-color: darkgray;
+			padding-top: 5px;
+			padding-bottom: 5px;
+			height: 40px;
+			width: 120px;
+			font-size: 15px;
+			border-radius: 25px;
+			border: 1px dotted silver;
+		}
+		.modal-Help button:hover{
+			background-color: yellowgreen;
+		}
+
+		.modal-line button{
+			background-color: darkgray;
+			padding-top: 5px;
+			padding-bottom: 5px;
+			height: 40px;
+			width: 120px;
+			font-size: 15px;
+			border-radius: 25px;
+			border: 1px dotted silver;
+		}
+
+		.modal-line button:hover{
+			background-color: yellowgreen;
+		}
+
+		.modal-project button{
+			background-color: darkgray;
+			padding-top: 5px;
+			padding-bottom: 5px;
+			height: 40px;
+			width: 120px;
+			font-size: 15px;
+			border-radius: 25px;
+			border: 1px dotted silver;
+		}
+		.modal-project button:hover{
+			background-color: yellowgreen;
+
+		}
+
+		.modal-About button{
+			background-color: darkgray;
+			padding-top: 5px;
+			padding-bottom: 5px;
+			height: 40px;
+			width: 120px;
+			font-size: 15px;
+			border-radius: 25px;
+			border: 1px dotted silver;
+		}
+
+		.modal-About button:hover{
+			background-color: yellowgreen;
+		}
+
+		.modal-Shuffle button{
+			background-color: darkgray;
+			padding-top: 5px;
+			padding-bottom: 5px;
+			height: 40px;
+			width: 120px;
+			font-size: 15px;
+			border-radius: 25px;
+			margin: 10px;
+			border: 1px dotted silver;
+		}
+		.modal-Shuffle button:hover{
+			background-color: yellowgreen;
+		}
+
+		.modal-Shuffle label{
+			color: black;
+		}
+
+		.modal-DD button{
+			background-color: darkgray;
+			padding-top: 5px;
+			padding-bottom: 5px;
+			height: 40px;
+			width: 120px;
+			font-size: 15px;
+			border-radius: 25px;
+			border: 1px dotted silver;
+			margin: 10px;
+		}
+		.modal-DD button:hover{
+			background-color: yellowgreen;
+		}
+
+
+		.modal-Automate button{
+			background-color: darkgray;
+			padding-top: 5px;
+			padding-bottom: 5px;
+			height: 40px;
+			width: 120px;
+			font-size: 15px;
+			border-radius: 25px;
+			border: 1px dotted silver;
+			margin: 10px;
+		}
+		.modal-Automate button:hover{
+			background-color: yellowgreen;
+		}
+
+		.modal-Caution button{
+			background-color: darkgray;
+			padding-top: 5px;
+			padding-bottom: 5px;
+			height: 40px;
+			width: 120px;
+			font-size: 15px;
+			border-radius: 25px;
+			border: 1px dotted silver;
+			margin: 10px;
+		}
+		.modal-Caution button:hover{
+			background-color: yellowgreen;
+		}
+
+		.modal-doc button{
+			background-color: darkgray;
+			padding-top: 5px;
+			padding-bottom: 5px;
+			height: 40px;
+			width: 120px;
+			font-size: 15px;
+			border-radius: 25px;
+			border: 1px dotted silver;
+			margin: 10px;
+		}
+		.modal-doc button:hover{
+			background-color: yellowgreen;
+		}
+
+	</style>
+</head>
+<body>
+
+	<div id="top-bar">
+		
+		<button class="topbuttons" id="title" disabled=""></button>
+		<!-- <button id="title2" disabled="">grids-ai.com</button> -->
+		<button class="topbuttons" id="addsite" title="Create Site/Plot Boundry." alt="Create Site."></button>
+		<!-- <button class="tooltip" id="brush" disabled>|</button> -->
+		<button class="topbuttons" id="newspace" title="Create New Cells with Random Color" alt="Create New Cells with Random Color!"></button>	
+		<button class="topbuttons" id="addremove" title="Remove Cells" alt="Remove Cells"></button>
+		<button class="topbuttons" id="match" title="Match Cells to create cells with same color" alt="Match Cells to create cells with same color"></button>
+		<button class="topbuttons" id="selSimilar" title="Select Cells with same color to drag and reposition" alt="Select Cells with same color to drag and reposition"></button>
+		<button class="topbuttons" id="copySpace" title="Copy cells to paste them with diffrent color and create new space." alt="Copy Cells to paste them with diffrent color and create new space"></button>		
+		<button class="topbuttons" id="moveAll" title="Move all cells at once." alt="Move all cells at once."></button>
+		<button class="topbuttons" id="measure" title="Measure Cells." alt="Measure Cells."></button>
+		
+		<button class="topbuttons" id="lineToggle" title="Draw a new line." alt="Draw a new line. Important - These lines are only for representation purpose."></button>
+		<button class="topbuttons" id="lineEraser" title="Erase Lines one by one." alt="Erase Lines one by one."></button>
+	<!-- 	<button class="topbuttons" id="lines" title="Change Line Color and Weight." alt="Change Line Color and Weight."></button> -->
+		<button class="topbuttons" id="deleteall" title="Delete All." alt="Delete All."></button>
+		<button class="topbuttons" id="docs" title="Annotate/Confirm Space type and names. Get area on screen.This is required before automation." alt="Annotate/Confirm Space type and names. Get area on screen. This is required before automation."></button>
+		<button class="topbuttons" id="downloadSn" title="Take Snapshot." alt="Take Snapshot."></button>
+		<button class="topbuttons" id="shuffle" title="Shuffle All Positions Randomly." alt="Shuffle All Positions Randomly."></button>
+		<button class="topbuttons" id="automate" title="Automate process to develop a CAD file to download." alt="Automate process to develop a CAD file to download."></button>
+		<!-- <button id="directdesign"></button> -->
+		<!-- <button id="downloadAll"></button> -->
+		<button class="topbuttons" id="about" title="About Us." alt="About Us."></button>
+		<button class="topbuttons" id="caution" title="Known Bugs." alt="Instructions."></button>
+		<button class="topbuttons" id="help" title="Help" alt="Help"></button>
+		<button class="topbuttons" id="projSetup" title="Setting. Project Setup." alt="Settings. Project Setup."></button>
+		
+		
+		
+		
+	</div>
+
+
+	<div id="secondTop-bar">
+		<p id="active-command"></p>
+
+	</div>
+
+	
+
+
+	<div class="modalProj-bg">
+		<div class="modal-project">
+			<h2>Project Setup</h2>
+			
+			
+			<label>Target Area (sqm)</label>
+			<input type="number" name="area" id="target" value="500">
+			<label>Grid Size</label>
+			<select name="currentCellArea" id="currentCellArea" style="overflow: auto;">
+				<option value="0.25">0.5 x 0.5 m</option>
+
+				<option value="0.0225">0.15 x 0.15 m</option>
+				<option value="0.0625">0.25 x 0.25 m</option>
+				<option value="0.09">0.3 x 0.3 m</option>
+				<option value="0.0929">1ft x 1ft</option>
+				<option value="0.371">2ft x 2ft</option>
+				<option value="0.836">3ft x 3ft</option>
+				<option value="2.32">5ft x 5ft</option>
+				<option value="9.29">10ft x 10ft</option>
+				<option value="0.36">0.6 x 0.6 m</option>				
+				<option value="1">1 x 1 m</option>				
+				<option value="2.25">1.5 x 1.5 m</option>				
+				<option value="4">2 x 2 m</option>
+				<option value="6.25">2.5 x 2.5 m</option>
+				<option value="9">3 x 3 m</option>
+				<option value="12.25">3.5 x 3.5 m</option>
+				<option value="16">4 x 4 m</option>
+				<option value="25">5 x 5 m</option>
+				<option value="36">6 x 6 m</option>
+				<option value="49">7 x 7 m</option>
+				<option value="64">8 x 8 m</option>
+				<option value="81">9 x 9 m</option>
+				<option value="100">10 x 10 m</option>
+				<option value="121">11 x 11 m</option>
+				<option value="144">12 x 12 m</option>
+				<option value="169">13 x 13 m</option>
+				<option value="196">14 x 14 m</option>
+				<option value="225">15 x 15 m</option>
+				<option value="400">20 x 20 m</option>
+				<option value="625">25 x 25 m</option>
+				<option value="2500">50 x 50 m</option>
+			</select>
+			<button id="save-proj-setup">Save</button>
+		</div>
+	</div>
+
+
+
+	<div class="modalDoc-bg">
+		<div class="modal-doc">			
+			<label>Area Statement</label>
+			<table id="areaTable" class="areaTable" border="1" cellspacing="0" cellpadding="5">		
+				<tr>
+					<th>Item</th>
+					<th>Name</th>
+					<th>Area</th>				
+				</tr>				
+			</table>
+			<div style="justify-content: center;">
+				
+				<button id="save-doc-setup">OK</button>
+				
+
+				
+			</div>
+			
+		</div>
+	</div>
+
+
+	<div class="modalLine-bg">
+		<div class="modal-line">
+			<h3 style="text-align: center;">Select Line Type/Color</h3>
+			<label>Select Item to draw</label>
+			<select name="lineStyle" id="lineStyle">
+				<option value="Wall">Wall</option>
+				<option value="Door">Door</option>
+				<option value="Opening">Opening</option>
+				<option value="Window">Window</option>				
+				
+				
+
+
+
+			</select>
+			<button id="save-line-setup" class="save">Ok</button>
+
+			<br>
+		</div>
+	</div>
+
+
+	<div class="modalHelp-bg">
+		<div class="modal-Help">	
+			<p>Key Commands</p>
+			<p>'Z' = Create New Cell With Random Color <br>'X' = Remove Cells <br> 'A' = Match predrawn cell color. <br> 'S' = Measurement.<br> 'Q' = Draw Line <br> 'W' = Line Eraser. <br> 'F' = Move Cells with same color. <br> 'D' = Copy and paste new cell with same area.<br> 'G' = Move All Drawings.  </p><br>		
+				<button id="save-help-setup" class="save-help">Ok</button>
+				<br>
+			</div>
+		</div>
+
+		<div class="modalAbout-bg">
+			<div class="modal-About">	
+				<p>About</p>
+				<p>Hi,<br>
+					
+					The tool is developed as minimal and distraction free as possible to help designers to focus on design instead of spending significant amount of time in learning it. The tool is easy to use and could be easily used by any person regardless background and intention. <br><br> Major uses of this tool could be anything from planning, elevation design, interior, pixelart, detail section, facade design, infographics, layout design, and on and on. <br> 
+					<br>
+					We are heading towards development of a complete automated solution with submission drawings package in one go. 
+					<br>
+					<br>
+					For any queries, suggestions, bugs, issues, anything just mail us at - quantpix@gmail.com.
+					<br>
+					
+					2021. Copyrights @ Quantum Pixel Intelligence. All Rights Reserved.
+					<br>
+
+				</p>
+				<button id="save-About-setup" class="save-about">Ok</button>
+				<br>
+			</div>
+		</div>
+
+
+
+		<div class="modalShuffle-bg">
+			<div class="modal-Shuffle">	
+				<p> ATTENTION!! - <br>- This command will shuffle current arrangement on the basis of respective areas and proximity. <br> - In case if you wish to save current design arrangement, request to kindly take a snapshot first and then click on shuffle. 
+					<br>
+					- Shuffle ! Modify ! Repeat !
+					<br>
+				</p>
+				<div>
+					<p>Did you like the Design?</p>
+					<input type="radio" id="rate1" name="rating_shuffle" value="1">
+					<label for="rate1">Yes</label><br>
+					<input type="radio" id="rate2" name="rating_shuffle" value="2">
+					<label for="rate2">No</label><br>			 
+				</div>
+				<button name="asd" value="shuffler" id="shuffler">Shuffle</button>			
+				<button id="shuffleCancel" class="shuffleCancel">Cancel</button>
+				<br>
+			</div>
+		</div>
+
+
+		<div class="modalAutomate-bg">
+			<div class="modal-Automate">	
+
+				<p> Attention!!<br> - Make sure you have properly annotated all spaces. <br> - Please note that the spaces added/modified since last annotation might not reflect in the automation. <br> - Make sure all spaces are continous and there are no gaps beween two spaces with same color.<br> - Try avoiding placing spaces with width of single cell for more accuracy. <br> - Kindly check 'Known Bugs' and read instructions before proceeding.</p>
+
+				
+				<button name="automation" value="automation" id="automation">Automate</button>	
+				<button id="automateCancel" class="automateCancel">Cancel</button>
+			</div>
+		</div>
+
+		<div class="modalCaution-bg">
+			<div class="modal-Caution">	
+
+				<p> Known Bug Notes <br><br>
+					Following are few precautions you may have to take while using automation and shuffle commands for best user experience.<br>
+					1. Try to make as clean shapes as possible. Example - Rectangle, Square.<br>
+					2. Create seperate space in case there is any clear gap between two spaces with single usage. Try to make continous spaces.<br>
+					3. Once space is drawn. If you draw another space over it, the existing one gets removed. There will always be a single cell per grid regardless modifications.<br>
+					4. Avoid single concave shape, instead try making multiple spaces. <br>
+					5. In case there is a long linear space being generated multiple times, try removing 1 or two cells and try again.<br>
+					6. The cad file that will get generated shall have doors on all interconnecting walls and windows on outer boundry walls. You may have to modify as per internal circulations. There will be columns at the ends for representation purpose.<br>
+					7. The rooms will get generated such a way that entire room could be shifted in CAD tools.<br>
+					8. Our intention here is to automate 80% initial job and assist designers to develop a new paradigm. <br>
+					9. This tool is not replacement of any other tool but developed to develop a basic understanding of the project. <br>
+					10. The layouts generated are intentionally kept open ended, so user may have to drag them as per they fit suitable for their design.<br>
+					11. The ai functions such as shuffle and autmation are ideal for upto 10 spaces considering the complexity.<br>
+					12. Moving and copying the spaces could be done for minimum 2 grid spaces.<br>
+
+				</p>
+
+				
+					
+				<button id="cautionCancel" class="cautionCancel">Ok</button>
+			</div>
+		</div>
+
+		
+
+
+
+		<div>
+			<div>
+				
+				<canvas id="canvas"></canvas>
+			</div>
+		</div>
+
+		<script type="text/javascript" src="{{ url_for('static',filename='vector.js') }}"></script>
+		<script type="text/javascript" src="{{ url_for('static',filename='utils.js') }}"></script>
+		<script type="text/javascript" src="{{ url_for('static',filename='main.js') }}"></script>
+	</body>
+	</html>

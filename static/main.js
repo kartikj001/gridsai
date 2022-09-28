@@ -10,7 +10,7 @@ window.onload = function(){
 	w = canvas.width = window.innerWidth-gridSize,
 	h =  canvas.height = window.innerHeight-(gridSize*3),
 	x,y,lastX,lastY;
-	alert('Welcome to Grids-Ai.com. This software is operational only from computer or laptop at the moment.');
+	alert('Welcome to Grids-Ai. This software is operational only from computer or laptop at the moment.');
 	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
     	getElementById('body').style.display = 'none';
     	

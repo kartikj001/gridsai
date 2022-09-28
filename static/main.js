@@ -120,7 +120,7 @@ window.onload = function(){
 
 	///////////////
 
-	let shuffleBg = document.querySelector('.modalShuffle-bg'); 
+
 
 ////////////////////////////////////////////////////
 	let scaler = () =>{
